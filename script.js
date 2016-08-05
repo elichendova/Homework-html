@@ -1,11 +1,11 @@
 window.onload = snake;
 
 function snake() {
-	let canvas = document.getElementById("game-canvas");
+let canvas = document.getElementById("game-canvas");
 	let ctx = canvas.getContext("2d");
 	var w = canvas.width;
 	var h = canvas.height;
-	var cw = 20; //cell width
+	var cw = 25; //cell width
 	var d;
 	var food;
 
@@ -39,7 +39,7 @@ function snake() {
 
 	function paint() {
 		var background = new Image();
-		background.src = "snake_bck.jpg";
+		background.src = "https://raw.githubusercontent.com/Team-Margarita/ArcadeWorld/master/TeamMargarita-ArcadeWorld/images/snake_bck.jpg";
 		ctx.drawImage(background, 0, 0);
 		ctx.fillStyle = "rgba(0, 0, 200, 0)";
 		ctx.fillRect(0, 0, w, h);
@@ -55,6 +55,7 @@ function snake() {
 
 		if (nx == -1 || nx == w / cw || ny == -1 || ny == h / cw || check_collision(nx, ny, snake_array)) {
 			//restart game/game over condition
+			//window.alert("Game over!");
 			init();
 			return;
 		}
@@ -81,14 +82,14 @@ function snake() {
 
 	//paint cells
 	function paint_cell(x, y) {
-		ctx.fillStyle = "white";
+		ctx.fillStyle = "lightblue";
 		ctx.fillRect(x * cw, y * cw, cw, cw);
-		ctx.strokeStyle = "gray";
+		ctx.strokeStyle = "darkblue";
 		ctx.strokeRect(x * cw, y * cw, cw, cw);
-		ctx.shadowColor = "yellow";
-		ctx.shadowBlur = 15;
-		ctx.shadowOffsetX = 0;
-		ctx.shadowOffsetY = 0;
+		//ctx.shadowColor = "#7100fd";
+		//ctx.shadowBlur = 20;
+		//ctx.shadowOffsetX = 0;
+		//ctx.shadowOffsetY = 0;
 	}
 
 	function check_collision(x, y, array) {
